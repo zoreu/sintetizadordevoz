@@ -1,0 +1,70 @@
+<!-- Crie um formulário com um campo de texto e um botão -->
+<form>
+  <label for="texto">Texto:</label><br>
+  <input type="text" id="texto"><br>
+  <button type="button" onclick="sintetizar()">Sintetizar</button>
+</form>
+
+<style>
+form {
+  /* Adicione algum espaçamento interno */
+  padding: 20px;
+
+  /* Altere a cor de fundo */
+  background-color: lightgrey;
+
+  /* Adicione um borda arredondada */
+  border-radius: 10px;
+}
+
+label {
+  /* Altere a cor da fonte */
+  color: grey;
+
+  /* Adicione um pouco de espaçamento entre o rótulo e o campo de texto */
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  /* Altere a largura do campo de texto */
+  width: 300px;
+
+  /* Adicione uma borda */
+  border: 1px solid grey;
+
+  /* Adicione uma borda arredondada */
+  border-radius: 5px;
+}
+
+button[type="button"] {
+  /* Altere a cor de fundo do botão */
+
+
+
+</style>
+
+<!-- Adicione um elemento de áudio para reproduzir a sintetização -->
+<audio id="audio"></audio>
+
+<script>
+  // Crie a função que será chamada quando o botão for clicado
+  function sintetizar() {
+    // Obtenha o texto a ser sintetizado
+    var texto = document.getElementById("texto").value;
+
+    // Crie um objeto SpeechSynthesisUtterance com o texto a ser sintetizado
+    var fala = new SpeechSynthesisUtterance(texto);
+
+    // Altere algumas configurações da sintetização, como a linguagem e a velocidade de fala
+    fala.lang = 'pt-BR';
+    fala.rate = 0.7;
+
+    // Obtenha o elemento de áudio e atribua a função de reprodução a ele
+    var audio = document.getElementById("audio");
+    fala.addEventListener('end', function() { audio.pause(); });
+    audio.src = URL.createObjectURL(fala);
+
+    // Sintetize o texto
+    window.speechSynthesis.speak(fala);
+  }
+</script>
