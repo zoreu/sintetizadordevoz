@@ -38,7 +38,7 @@ input[type="text"] {
 
 button[type="button"] {
   /* Altere a cor de fundo do botão */
-
+}
 
 
 </style>
@@ -57,12 +57,11 @@ button[type="button"] {
 
     // Altere algumas configurações da sintetização, como a linguagem e a velocidade de fala
     fala.lang = 'pt-BR';
-    fala.rate = 0.7;
+    fala.rate = 1.0;
 
     // Obtenha o elemento de áudio e atribua a função de reprodução a ele
     var audio = document.getElementById("audio");
     fala.addEventListener('end', function() { audio.pause(); });
-    audio.src = URL.createObjectURL(fala);
 
     // Sintetize o texto
     window.speechSynthesis.speak(fala);
